@@ -4,6 +4,7 @@
   "description": "serverless access counter",
   "main": "handler.js",
   "scripts": {
+     "sls": "serverless",
      "serverless": "serverless",
       "deploy": "serverless deploy",
     "test": "echo \"Error: no test specified\" && exit 1"
