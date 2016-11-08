@@ -1,15 +1,15 @@
 'use strict';
 
 var AWS = require("aws-sdk");
-var config = require("./config/config.json");
+const config = require('./conf/config.json');
 
-var docClient = new AWS.DynamoDB.DocumentClient();
+const docClient = new AWS.DynamoDB.DocumentClient();
 
-var tableName = config["tableName"];
-var counterName = config["counterName"];
+const tableName = config['tableName'];
+const counterName = config['counterName'];
 
 module.exports.counter = (event, context, callback) => {
-    var params = {
+    const params = {
         TableName: tableName,
         Key: {
             "name": counterName
@@ -33,7 +33,7 @@ module.exports.counter = (event, context, callback) => {
         };
         if (err) {
             console.log("Unable to update item. Error JSON:", JSON.stringify(err, null, 2));
-            var params_init = {
+            const params_init = {
                 TableName: tableName,
                 Item:{
                     "name": counterName,
