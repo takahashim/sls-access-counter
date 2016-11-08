@@ -8,7 +8,16 @@ Note: Access counter in the 21st century is JSON object, not a concatinated imag
 
 This counter uses [Serverless Framework](https://github.com/serverless/serverless).  It supports AWS only now.
 
-### from source code
+### using serverless framework (for user)
+
+```
+$ npm install -g serverless
+$ serverless install -u https://github.com/takahashim/sls-access-coutner
+$ cd sls-access-coutner
+$ serverless deploy
+```
+
+### using git (for developer)
 
 ```
 $ git clone https://github.com/takahashim/sls-access-coutner.git
@@ -16,11 +25,6 @@ $ cd sls-access-counter
 $ npm install
 $ npm run deploy
 ```
-
-### using sls
-
-(TBD)
-
 
 ## How to Use
 
