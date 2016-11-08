@@ -19,7 +19,15 @@ module.exports.counter = (event, context, callback) => {
         ReturnValues:"UPDATED_NEW"
     };
     docClient.update(params, function(err, data) {
-        var response;
+        var response = {
+            statusCode: 200,
+            headers: {
+                "Access-Control-Allow-Origin" : "*" // Required for CORS support to work
+            },
+            body: JSON.stringify({
+                count: 0
+            })
+        };
         if (err) {
             console.log("Unable to update item. Error JSON:", JSON.stringify(err, null, 2));
             var params_init = {
@@ -32,30 +40,19 @@ module.exports.counter = (event, context, callback) => {
             docClient.put(params_init, function(err, data) {
                 if (err) {
                     console.error("Unable to add item. Error JSON:", JSON.stringify(err, null, 2));
-                    response = {
-                        statusCode: 500,
-                        body: JSON.stringify({
-                            count: 0
-                        })
-                    };
+                    response.statusCode = 500;
                 } else {
                     console.log("Added item:", JSON.stringify(data, null, 2));
-                    response = {
-                        statusCode: 200,
-                        body: JSON.stringify({
-                            count: 1
-                        })
-                    };
+                    response.body = JSON.stringify({
+                        count: 1
+                    });
                 }
             });
         } else {
             console.log("UpdateItem succeeded:", JSON.stringify(data, null, 2));
-            response = {
-                statusCode: 200,
-                body: JSON.stringify({
-                    count: data.Attributes.num
-                })
-            };
+            response.body = JSON.stringify({
+                count: data.Attributes.num
+            });
         }
         callback(null, response);
     });

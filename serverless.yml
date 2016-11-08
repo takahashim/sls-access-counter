@@ -23,6 +23,7 @@ functions:
       - http:
           path: counter
           method: get
+          cors: true
 
 resources:
   Resources:
