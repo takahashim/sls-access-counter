@@ -1,0 +1,4 @@
+{
+    tableName: "modern-access-counter",
+    counterName: "counter1"
+}

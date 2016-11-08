@@ -1,15 +1,18 @@
 'use strict';
 
 var AWS = require("aws-sdk");
+var config = require("./config/config.json");
+
 var docClient = new AWS.DynamoDB.DocumentClient();
-var table = "modern-access-counter";
-var counter_name = "counter1";
+
+var tableName = config["tableName"];
+var counterName = config["counterName"];
 
 module.exports.counter = (event, context, callback) => {
     var params = {
-        TableName: table,
+        TableName: tableName,
         Key: {
-            "name": counter_name
+            "name": counterName
         },
         UpdateExpression: "set num = num + :val",
         ConditionExpression: "attribute_exists(num)",
@@ -31,9 +34,9 @@ module.exports.counter = (event, context, callback) => {
         if (err) {
             console.log("Unable to update item. Error JSON:", JSON.stringify(err, null, 2));
             var params_init = {
-                TableName: table,
+                TableName: tableName,
                 Item:{
-                    "name": counter_name,
+                    "name": counterName,
                     "num": 1
                 }
             };
