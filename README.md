@@ -1,8 +1,8 @@
 # Serverless Access Counter
 
-In the good old days, we had our Homepage with access counters.  It's back now with new technology.
+In the good old days, we had our Homepage with access counters.  Now it's back with new technology.
 
-Note: Access counters in 21th century is JSON object, not a concatinated image file.
+Note: Access counter in the 21st century is JSON object, not a concatinated image file.
 
 ## How to Deploy
 
