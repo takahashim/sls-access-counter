@@ -1,5 +1,7 @@
 # Serverless Access Counter
 
+[![serverless](http://public.serverless.com/badges/v3.svg)](http://www.serverless.com)
+
 In the good old days, we had our Homepage with access counters.  Now it's back with new technology.
 
 Note: Access counter in the 21st century is JSON object, not a concatinated image file.
